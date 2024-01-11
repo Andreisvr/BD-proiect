@@ -1,0 +1,258 @@
+
+Select * from Apartamente
+Desc Apartamente
+
+CREATE TABLE Apartamente (
+    ID_Apartament INT PRIMARY KEY,
+    Adresa VARCHAR(255) NOT NULL,
+    NumarCamere INT,
+    Suprafata INT,
+    PretInchiriere INT
+);
+Desc Apartamente
+
+Select * from Clienti 
+CREATE TABLE Clienti (
+    ID_Client INT PRIMARY KEY,
+    Nume VARCHAR(50) NOT NULL,
+    Prenume VARCHAR(50) NOT NULL,
+    Telefon VARCHAR(15)
+);
+
+Select *from Inchirieri
+
+CREATE TABLE Inchirieri (
+    ID_Inchiriere INT PRIMARY KEY,
+    ID_Apartament INT,
+    ID_Client INT,
+    DataInchiriere DATE,
+    DurataZile INT,
+    FOREIGN KEY (ID_Apartament) REFERENCES Apartamente(ID_Apartament),
+    FOREIGN KEY (ID_Client) REFERENCES Clienti(ID_Client)
+);
+
+Select * from Preturi
+
+CREATE TABLE Preturi (
+    ID_Pret INT PRIMARY KEY,
+    ID_Apartament INT,
+    PretZi INT,
+    NumeLocatie VARCHAR(100),
+    FOREIGN KEY (ID_Apartament) REFERENCES Apartamente(ID_Apartament)
+);
+
+
+Select *from Apartamente
+INSERT INTO Apartamente (ID_Apartament, Adresa, NumarCamere, Suprafata, PretInchiriere) VALUES (1, 'Strada A', 2, 60, 800)
+INSERT INTO Apartamente (ID_Apartament, Adresa, NumarCamere, Suprafata, PretInchiriere) VALUES  (2, 'Strada B', 3, 80, 1200)
+INSERT INTO Apartamente (ID_Apartament, Adresa, NumarCamere, Suprafata, PretInchiriere) VALUES  (3, 'Strada C', 1, 50, 600)
+INSERT INTO Apartamente (ID_Apartament, Adresa, NumarCamere, Suprafata, PretInchiriere) VALUES  (4, 'Strada D', 2, 70, 1000)
+INSERT INTO Apartamente (ID_Apartament, Adresa, NumarCamere, Suprafata, PretInchiriere) VALUES   (5, 'Strada E', 4, 100, 1500)
+INSERT INTO Apartamente (ID_Apartament, Adresa, NumarCamere, Suprafata, PretInchiriere) VALUES   (6, 'Strada F', 3, 90, 1300)
+
+
+Select * from Clienti
+INSERT INTO Clienti (ID_Client, Nume, Prenume, Telefon) VALUES (1, 'Popescu', 'Ion', '0722-111-222')
+   INSERT INTO Clienti (ID_Client, Nume, Prenume, Telefon) VALUES (2, 'Ionescu', 'Maria', '0733-222-333')
+  INSERT INTO Clienti (ID_Client, Nume, Prenume, Telefon) VALUES  (3, 'Radu', 'George', '0744-333-444')
+  INSERT INTO Clienti (ID_Client, Nume, Prenume, Telefon) VALUES  (4, 'Dumitru', 'Elena', '0755-444-555')
+  INSERT INTO Clienti (ID_Client, Nume, Prenume, Telefon) VALUES  (5, 'Constantin', 'Ana', '0766-555-666')
+  INSERT INTO Clienti (ID_Client, Nume, Prenume, Telefon) VALUES  (6, 'Pătru', 'Mihai', '0777-666-777')
+
+
+Select * from Inchirieri
+ INSERT INTO Inchirieri (ID_Inchiriere, ID_Apartament, ID_Client, DataInchiriere, DurataZile) VALUES   (1, 1, 3, TO_DATE('2023-01-05', 'YYYY-MM-DD'), 7)
+ INSERT INTO Inchirieri (ID_Inchiriere, ID_Apartament, ID_Client, DataInchiriere, DurataZile) VALUES   (2, 2, 1, TO_DATE('2023-02-10', 'YYYY-MM-DD'), 14)
+  INSERT INTO Inchirieri (ID_Inchiriere, ID_Apartament, ID_Client, DataInchiriere, DurataZile) VALUES  (3, 3, 5, TO_DATE('2023-03-15', 'YYYY-MM-DD'), 30)
+  INSERT INTO Inchirieri (ID_Inchiriere, ID_Apartament, ID_Client, DataInchiriere, DurataZile) VALUES  (4, 4, 2, TO_DATE('2023-04-20', 'YYYY-MM-DD'), 10)
+  INSERT INTO Inchirieri (ID_Inchiriere, ID_Apartament, ID_Client, DataInchiriere, DurataZile) VALUES  (5, 5, 4, TO_DATE('2023-05-25', 'YYYY-MM-DD'), 21)
+  INSERT INTO Inchirieri (ID_Inchiriere, ID_Apartament, ID_Client, DataInchiriere, DurataZile) VALUES  (6, 6, 6, TO_DATE('2023-06-30', 'YYYY-MM-DD'), 15)
+
+
+Select * from Preturi
+INSERT INTO Preturi (ID_Pret, ID_Apartament, PretZi, NumeLocatie) VALUES  (1, 1, 100, 'Bucuresti')
+INSERT INTO Preturi (ID_Pret, ID_Apartament, PretZi, NumeLocatie) VALUES  (2, 2, 150, 'Cluj-Napoca')
+INSERT INTO Preturi (ID_Pret, ID_Apartament, PretZi, NumeLocatie) VALUES     (3, 3, 80, 'Timisoara')
+INSERT INTO Preturi (ID_Pret, ID_Apartament, PretZi, NumeLocatie) VALUES     (4, 4, 100, 'Iasi')
+ INSERT INTO Preturi (ID_Pret, ID_Apartament, PretZi, NumeLocatie) VALUES    (5, 5, 200, 'Constanta')
+ INSERT INTO Preturi (ID_Pret, ID_Apartament, PretZi, NumeLocatie) VALUES    (6, 6, 130, 'Brasov')
+
+--5 Confirmarea existentei tabelelor-------------------------------------------------------------------------------------------------------------------------------
+
+Select * from APARTAMENTE
+Select * from Clienti
+Select * from Inchirieri
+Select * from Preturi
+
+Desc Apartamente
+Desc Clienti
+Desc Inchirieri
+Desc Preturi
+
+SELECT column_name, data_type, data_length, nullable
+FROM all_tab_columns
+WHERE table_name = 'APARTAMENTE';
+
+SELECT column_name, data_type, data_length, nullable
+FROM all_tab_columns
+WHERE table_name = 'Clienti';
+
+SELECT column_name, data_type, data_length, nullable
+FROM all_tab_columns
+WHERE table_name = 'Inchirieri';
+
+SELECT column_name, data_type, data_length, nullable
+FROM all_tab_columns
+WHERE table_name = 'Preturi';
+
+----------------------constrângeri table
+SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE
+FROM USER_CONSTRAINTS
+WHERE TABLE_NAME = 'Inchirieri';
+
+SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE
+FROM USER_CONSTRAINTS
+WHERE TABLE_NAME = 'Clienti';
+
+SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE
+FROM USER_CONSTRAINTS
+WHERE TABLE_NAME = 'Preturi';
+
+SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE
+FROM USER_CONSTRAINTS
+WHERE TABLE_NAME = 'APARTAMENTE';
+
+---6 Definirea de obiecte ale bazei de date -------------------------------------------------------------------------
+
+CREATE VIEW vedere_inchirieri AS
+SELECT
+    i.ID_Inchiriere,
+    i.DataInchiriere,
+    i.DurataZile,
+    a.Adresa AS AdresaApartament,
+    c.Nume AS NumeClient,
+    c.Prenume AS PrenumeClient
+FROM
+    Inchirieri i
+JOIN
+    Apartamente a ON i.ID_Apartament = a.ID_Apartament
+JOIN
+    Clienti c ON i.ID_Client = c.ID_Client;
+
+DROP VIEW vedere_inchirieri;
+
+SELECT * FROM user_views WHERE view_name = 'VEDERE_INCHIRIERI';
+--------------
+
+CREATE SEQUENCE seq_id_inchiriere
+START WITH 1
+INCREMENT BY 1;
+
+ALTER SEQUENCE seq_id_inchiriere INCREMENT BY 5;
+
+DROP SEQUENCE seq_id_inchiriere;
+
+SELECT * FROM user_sequences WHERE sequence_name = 'SEQ_ID_INCHIRIERE';
+----------------
+
+CREATE SYNONYM sin_clienti FOR Clienti;
+
+DROP SYNONYM sin_clienti;
+CREATE SYNONYM sin_clienti FOR Clienti;
+
+SELECT * FROM user_synonyms WHERE synonym_name = 'SIN_CLIENTI';
+------------------
+
+CREATE INDEX idx_pret_inchiriere ON Apartamente(PretInchiriere);
+
+DROP INDEX idx_pret_inchiriere;
+CREATE INDEX idx_pret_inchiriere ON Apartamente(PretInchiriere DESC);
+
+SELECT * FROM user_indexes WHERE index_name = 'IDX_PRET_INCHIRIERE';
+
+----------------7 Exemplificare de comenzi de prelucrare asupra datelor:-------------------
+
+UPDATE Apartamente
+SET PretInchiriere = 950
+WHERE ID_Apartament = 7;
+
+DELETE FROM Apartamente
+WHERE ID_Apartament = 7;
+
+SELECT * FROM Apartamente
+WHERE NumarCamere = 3;
+
+UPDATE Clienti
+SET Telefon = '0777-888-999'
+WHERE ID_Client = 7;
+
+DELETE FROM Clienti
+WHERE ID_Client = 7;
+
+SELECT * FROM Clienti
+WHERE Nume = 'Ionescu';
+
+INSERT INTO Inchirieri (ID_Inchiriere, ID_Apartament, ID_Client, DataInchiriere, DurataZile)
+VALUES (7, 4, 3, TO_DATE('2023-07-15', 'YYYY-MM-DD'), 14);
+
+UPDATE Inchirieri
+SET DurataZile = 21
+WHERE ID_Inchiriere = 7;
+
+DELETE FROM Inchirieri
+WHERE ID_Inchiriere = 7;
+
+SELECT * FROM Inchirieri
+WHERE DurataZile > 10;
+
+
+---8 Selectia datelor - minim 5 interogari complexe ce pot fi incluse si in definitia unor viewuri, care contin conditii/clauze complexe.---------------
+
+
+------------Toate închirierile din București pentru apartamente cu cel puțin 3 camere și o suprafață mai mare de 80m ----
+SELECT *
+FROM Inchirieri I
+INNER JOIN Preturi P ON I.ID_Apartament = P.ID_Apartament
+INNER JOIN Apartamente A ON I.ID_Apartament = A.ID_Apartament
+WHERE NumeLocatie = 'Bucuresti' AND NumarCamere >= 3 AND Suprafata > 80;
+
+------------- închirierile facute de clienții cu nume ce începând cu litera 'P', ordonate după data închirierii  descrescător ----
+SELECT *
+FROM Inchirieri I
+INNER JOIN Clienti C ON I.ID_Client = C.ID_Client
+WHERE Nume LIKE 'P%'
+ORDER BY DataInchiriere DESC;
+
+
+----------media prețurilor de închiriere in fiecare locație și afișează doar locațiile care media depășește 120 l -----
+
+SELECT NumeLocatie, AVG(PretInchiriere) AS MediePret
+FROM Preturi P
+INNER JOIN Apartamente A ON P.ID_Apartament = A.ID_Apartament
+GROUP BY NumeLocatie
+HAVING AVG(PretInchiriere) > 120;
+
+----------numele și prenumele clienților care au închiriat apartamente cu 2 camere și au durata de închiriere mai mare de 14 zile fara cele din București---
+
+SELECT C.Nume, C.Prenume
+FROM Inchirieri I
+INNER JOIN Clienti C ON I.ID_Client = C.ID_Client
+INNER JOIN Apartamente A ON I.ID_Apartament = A.ID_Apartament
+INNER JOIN Preturi P ON A.ID_Apartament = P.ID_Apartament
+WHERE NumarCamere = 2 AND DurataZile > 14 AND NumeLocatie <> 'Bucuresti';
+
+----------Suma totala platita pentru inchirieri in fiecare locatie ----
+
+CREATE VIEW suma_totala AS
+SELECT
+    p.NumeLocatie,
+    SUM(i.DurataZile * p.PretZi) AS SumaTotala
+FROM
+    Inchirieri i
+JOIN
+    Preturi p ON i.ID_Apartament = p.ID_Apartament
+GROUP BY
+    p.NumeLocatie;
+
+SELECT * FROM user_views WHERE view_name = 'suma_totala';
+
